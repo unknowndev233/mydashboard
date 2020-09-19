@@ -1,7 +1,7 @@
 # mydashboard
 用 podman 把 grafana &amp; loki &amp; prometheus 组成一个用于显示不仅仅是 v2ray 使用情况的 pod  
 当然，它显示什么得看你怎么调整配置文件  
-prometheus 如何与 exporter 交互之类的看 `service` 文件吧，我不想说了（如果打算用多个 exporter 建议安装 socat）
+prometheus 如何与 exporter 交互之类的看 `service` 文件吧，我不想说了（如果打算用多个 exporter 建议~~再运行等同于 exporter 数量的 socat 容器或者~~暴露 prometheus 端口）
 
 ## 使用时需要什么？
 安装 `podman` 和 `v2ray-exporter` 才能正常工作并显示 `v2ray` 使用情况 ~~（为了正常观看建议从[这里](https://grafana.com/grafana/dashboards/11545)导入 dashboard）~~  
@@ -15,7 +15,7 @@ prometheus 如何与 exporter 交互之类的看 `service` 文件吧，我不想
 
 ## 已知问题
 ~~默认提供的 v2ray dashboard 在显示上有严重问题，建议自行制作或者从[这里](https://grafana.com/grafana/dashboards/11545)导入~~ 已经删掉了  
-如果你发现服务一直在重启，建议 exporter 早于容器启动
+~~如果你发现服务一直在重启，建议 exporter 早于容器启动~~ 在 socat 参数中加入了重试选项，不会出问题了
 
 ## Special Thanks
 
