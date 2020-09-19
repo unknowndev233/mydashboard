@@ -14,7 +14,7 @@ After=mdd-p-ceb67724093c6e374e995da00d5a10ac90190ef084e3f1e9ca03ab0b2041ebd1.ser
 Environment=PODMAN_SYSTEMD_UNIT=%n
 Restart=on-failure
 ExecStartPre=/bin/rm -f %t/mdd-c-2d6b71c02c52ed6984aeede9c77f41e984cbe1185c6d002b501a484a642fd4fa.pid %t/mdd-c-2d6b71c02c52ed6984aeede9c77f41e984cbe1185c6d002b501a484a642fd4fa.ctr-id
-ExecStart=/usr/bin/podman run --conmon-pidfile %t/mdd-c-2d6b71c02c52ed6984aeede9c77f41e984cbe1185c6d002b501a484a642fd4fa.pid --cidfile %t/mdd-c-2d6b71c02c52ed6984aeede9c77f41e984cbe1185c6d002b501a484a642fd4fa.ctr-id --cgroups=no-conmon --pod-id-file %t/mdd-p-ceb67724093c6e374e995da00d5a10ac90190ef084e3f1e9ca03ab0b2041ebd1.pod-id -d --replace --log-driver journald --name mydashboard-exporter-socat --network=host --rm docker.io/alpine/socat -ddd tcp:127.0.0.1:6969 tcp-listen:6969,bind=10.89.64.1,fork
+ExecStart=/usr/bin/podman run --conmon-pidfile %t/mdd-c-2d6b71c02c52ed6984aeede9c77f41e984cbe1185c6d002b501a484a642fd4fa.pid --cidfile %t/mdd-c-2d6b71c02c52ed6984aeede9c77f41e984cbe1185c6d002b501a484a642fd4fa.ctr-id --cgroups=no-conmon --pod-id-file %t/mdd-p-ceb67724093c6e374e995da00d5a10ac90190ef084e3f1e9ca03ab0b2041ebd1.pod-id -d --replace --log-driver journald --name mydashboard-exporter-socat --network=host --rm docker.io/alpine/socat -dd tcp:127.0.0.1:6969,forever tcp-listen:6969,bind=10.89.64.1,forever,fork
 ExecStop=/usr/bin/podman stop --ignore --cidfile %t/mdd-c-2d6b71c02c52ed6984aeede9c77f41e984cbe1185c6d002b501a484a642fd4fa.ctr-id -t 10
 ExecStopPost=/usr/bin/podman rm --ignore -f --cidfile %t/mdd-c-2d6b71c02c52ed6984aeede9c77f41e984cbe1185c6d002b501a484a642fd4fa.ctr-id
 PIDFile=%t/mdd-c-2d6b71c02c52ed6984aeede9c77f41e984cbe1185c6d002b501a484a642fd4fa.pid

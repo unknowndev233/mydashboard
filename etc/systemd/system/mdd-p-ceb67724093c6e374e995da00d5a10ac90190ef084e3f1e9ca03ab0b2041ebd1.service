@@ -23,4 +23,5 @@ KillMode=none
 Type=forking
 
 [Install]
+Alias=mdd.service
 WantedBy=multi-user.target default.target
